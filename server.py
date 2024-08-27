@@ -131,6 +131,7 @@ class PromptServer():
 
         @routes.get("/")
         async def get_root(request):
+            logging.info("\nget_root")
             response = web.FileResponse(os.path.join(self.web_root, "index.html"))
             response.headers['Cache-Control'] = 'no-cache'
             response.headers["Pragma"] = "no-cache"
