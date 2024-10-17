@@ -1,9 +1,9 @@
 version: '3.8'
 services:
   comfyui:
-    image: zhibeiyou-docker.pkg.coding.net/gaoweiyoutongyiziyuanguanli/gwdocker/comfyui:0.0.5
+    image: zhibeiyou-docker.pkg.coding.net/gaoweiyoutongyiziyuanguanli/gwdocker/comfyui:0.1.6
     container_name: comfyui
-   # command: python /opt/ComfyUI/main.py --listen --port 8188
+    command: python /opt/comfyUI/main.py --disable-metadata --listen --port 8188
     deploy:
       resources:
         reservations:
@@ -14,10 +14,11 @@ services:
     ports:
       - "8188:8188"
     volumes:
-      - /home/shanhai/models/moves/comfyui/models:/opt/ComfyUI/models
-      - /home/shanhai/models/moves/comfyui/output:/opt/ComfyUI/output
-      - /home/shanhai/models/moves/comfyui/custom_nodes:/opt/ComfyUI/custom_nodes
-      #- /u01/workspace/ComfyUI/extra_model_paths.yaml:/app/ComfyUI/extra_model_paths.yaml
+      - /home/shanhai/models/moves/comfyui/models:/opt/comfyUI/models
+      - /home/shanhai/models/moves/comfyui/output:/opt/comfyUI/output
+      - /home/shanhai/models/moves/comfyui/custom_nodes:/opt/comfyUI/custom_nodes
+      - /home/shanhai/models/moves/comfyui/input:/opt/comfyUI/input
+      - /home/shanhai/models/moves/comfyui/extra_model_paths.yaml:/opt/comfyUI/extra_model_paths.yaml
     networks:
       - comfyui_network
 networks:
